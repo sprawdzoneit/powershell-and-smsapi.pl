@@ -1,0 +1,19 @@
+#powershell script by sprawdzone.it
+#https://sprawdzone.it/powershell-powiadomienia-z-smsapi-pl/
+
+
+
+#token generated on SMSAPI.PL
+$SMSAPIBearer = "VLekWLRDd7YShPLxe54IgwwpyXXurJ0AeHhb1FGh"
+
+# sender's field available for the account in SMSAPI.PL
+$from = "zaufane.it"
+
+# recipient's phone number
+$to = "+48501234567"
+
+#Message content
+$message = ("Hello World")
+
+# sending messages using SMSAPI.PL
+Invoke-RestMethod -Uri "https://api.smsapi.pl/sms.do?from=$From&to=$To&message=$message&format=json" -ErrorAction Stop -Method GET -Headers @{Authorization="Bearer $SMSAPIBearer"}
